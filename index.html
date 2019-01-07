@@ -10,17 +10,75 @@
 </head>
 <body>
     <div class="example-one">
-        <i class="fas fa-circle fa-4x"></i> 
+        <i class="fas fa-caret-up fa-3x"></i>
         <i class="fas fa-circle fa-4x"></i>        
         <i class="fas fa-circle fa-4x"></i>        
         <i class="fas fa-circle fa-4x"></i>        
         <i class="fas fa-circle fa-4x"></i>               
     </div>   
     <div class="example-two">
-        <i class="fas fa-square fa-6x" style="color:blueviolet;"></i>
-        <i class="fas fa-square fa-6x" style="color:yellowgreen;"></i>
-        <i class="fas fa-square fa-6x" style="color:blue;"></i>
-        <i class="fas fa-square fa-6x" style="color:pink;"></i>
+        <i class="fas fa-square fa-5x" style="color:blueviolet;"></i>
+        <i class="fas fa-square fa-6x" style="color:yellowgreen;"></i> 
+        <i class="fas fa-square fa-7x" style="color:blue;"></i>
     </div>
+    
+    <script src="https://unpkg.com/popmotion/dist/popmotion.global.min.js"></script>
+
+<!-- Tween method: -->
+<!--     
+    <script>
+    const { easing, tween, styler } = window.popmotion;
+    const divStyler = styler(document.querySelector('.fa-3x'));
+
+    tween({
+        from: 0,
+        to: { x: 300, rotate: 180 },
+        duration: 1000,
+        ease: easing.backInOut,
+        flip: Infinity,
+        }).start(divStyler.set);
+    </script> -->
+
+ <!-- Crossfade compositor -->
+
+
+    <!-- <script src="https://unpkg.com/popmotion/dist/popmotion.global.min.js"></script>
+    <script>
+    const { tween, styler, easing, crossfade, transform, valueTypes } = window.popmotion;
+    const blendRedBlue = transform.blendColor('#FF1C68', '#198FE3');
+
+    const left = styler(document.querySelector('.fa-5x'));
+    const blended = styler(document.querySelector('.fa-6x'));
+    const right = styler(document.querySelector('.fa-7x'));
+
+    const animateLeft = tween({
+        from: 200,
+        to: 0,
+        ease: easing.easeInOut,
+        flip: Infinity,
+        duration: 1000
+    });
+
+    const animateRight = tween({
+        to: 200,
+        ease: easing.easeInOut,
+        flip: Infinity,
+        duration: 1000
+    });
+
+    animateLeft.start(left.set('y'));
+    animateRight.start(right.set('y'));
+
+    const blendedMotion = crossfade(animateLeft, animateRight)
+    .start(blended.set('y'));
+
+    tween({
+        duration: 3333,
+        flip: Infinity
+    }).start((v) => {
+        blended.set('color', valueTypes.color.transform(blendRedBlue(v)));
+        blendedMotion.setBalance(v);
+    }); 
+    </script> -->
 </body>
 </html>
